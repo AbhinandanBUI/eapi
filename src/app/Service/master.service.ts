@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class MasterService {
-  private baseUrl = 'http://localhost:4001/api/';
+  // private baseUrl = 'http://localhost:4001/api/';
+  private baseUrl = 'https://ereportapi.herokuapp.com/api/';
 
   constructor(private http: HttpClient) {}
 
