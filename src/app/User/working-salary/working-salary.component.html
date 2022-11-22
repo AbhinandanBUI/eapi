@@ -1,0 +1,119 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Salary</h1>
+</div>
+<div class="container">
+    <h4>Create Account</h4>
+    <div class="card bg-light">
+        <div class="card-body">
+            <form [formGroup]="salaryFrom">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label for="" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" formControlName="name" readonly />
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="" class="form-label">Salary Credit Date</label>
+                        <input type="text" class="form-control" formControlName="date" readonly />
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="" class="form-label">Total Salary</label>
+                        <input type="number" class="form-control" formControlName="totalsalary" readonly />
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="" class="form-label">Company Name</label>
+                        <input type="text" class="form-control" formControlName="companyName" readonly />
+                    </div>
+                   
+                </div>
+                <div class="row mt-2"  >
+                    <div class="col-md-3">
+                        <label for="" class="form-label">Credit Amount</label>
+                        <input type="number" class="form-control" formControlName="crsalary" />
+                    </div>
+                    <div class="col-md-9 text-center mt-4">
+                        
+                        <button class="btn btn-success btn-md px-5 " [disabled]="!salaryFrom.valid" (click)="Save()">Save</button>
+                        <button class="btn btn-danger btn-md px-5 mx-3" [disabled]="!salaryFrom.valid">Reset</button>
+                        <button class="btn btn-warning btn-md px-5" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" [disabled]="salaryFrom.valid">Update Basic Details</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive-lg">
+                <table class="table table-striped table-hover table-borderless table-primary align-middle">
+                    <thead class="table-light">
+                        <!-- <caption>Salary Details</caption> -->
+                        <tr>
+                             <td>Salary Credited Date</td>
+                             <td>Total Salary</td>
+                             <td>Credited Salary</td>
+                        </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr class="table-primary"  *ngFor="let item of basicSalaryDetails">
+                                <td scope="row">{{item.CreditedDateOfSalary}}</td>
+                                <td scope="row">{{item.SalaryDetails[0].totalSalary}}</td>
+                                <td scope="row">{{item.creditedSalary}}</td>
+                            </tr>
+                            
+                        </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Some Basic Details</h5>
+                <button type="button" id="cls-btn" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-body">
+
+                        <form [formGroup]="salaryUpdateForm">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-3 col-sm-12">
+                                    <div class="form-label">Total Salary</div>
+                                    <input type="text" class="form-control" formControlName="totalsalary" />
+                                </div>
+                                <div class="col-lg-6 col-md-3 col-sm-12">
+                                    <div class="form-label">Salary Credited Date</div>
+                                    <input type="date" class="form-control" formControlName="salarycrDate" />
+                                </div>
+
+                                <div class="col-lg-6 mt-2 col-md-3 col-sm-12">
+                                    <div class="form-label">Company Name </div>
+                                    <input type="text" class="form-control" formControlName="companyName" />
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"  
+                    (click)="UpdateSalaryAndCreditDate()">Save </button>
+                <button type="button" class="btn btn-danger" id="closebtn" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal  -->

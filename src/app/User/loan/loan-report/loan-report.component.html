@@ -1,0 +1,87 @@
+<div id="replace" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Loan</h1>
+    <div class="btn btn-primary" routerLink="/loan">
+        <i class="bi bi-arrow-left text-light"></i> Back
+    </div>
+</div>
+
+<div class="card" id="printingId" #printingId>
+    <div class="card-body">
+        <h5 class="text-center">Bill By E-Report</h5>
+        <div class="row">
+            <div class="col-lg-8 col-md-6">
+                <div class="row">
+                    <div class="col-6">Name :</div>
+                    <div class="col-6">{{billDetails.loanerName}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">Amount </div>
+                    <div class="col-6">{{billDetails.amount |currency:'INR'}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">Total Send Amount </div>
+                    <div class="col-6">{{billDetails.totalSendAmount |currency:'INR'}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">Total Receive Amount </div>
+                    <div class="col-6">{{billDetails.totalReceiveAmount |currency:'INR'}}</div>
+                </div>
+              
+                <div class="row">
+                    <div class="col-6">From Date </div>
+                    <div class="col-6">{{billDetails.createdAt |date:'dd-MM-yyyy'}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">To Date </div>
+                    <div class="col-6">{{billDetails.updatedAt|date:'dd-MM-yyyy'}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-light" role="alert">
+                            <strong> {{billMessage}} </strong> 
+                        </div>
+                       </div>
+                </div>
+            </div>
+            <h4 class="text-center h4 mt-2">Transition history</h4>
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped
+                        table-hover	
+                        table-bordered
+                        table-primary
+                        align-middle">
+                            <thead class="table-light">
+                                <caption>Transition History</caption>
+                                <tr>
+                                    <th>Date Of Transition</th>
+                                    <th>Amount</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody class="table-group-divider">
+                                    <tr class="table-primary"  *ngFor="let item of ViewTransitionDetails">
+                                        <td scope="row">{{item.createdAt | date:'dd-MM-yyyy'}}</td>
+                                        <td scope="row">{{item.amount | currency:'INR'}}</td>
+                                        <td scope="row">{{item.description }}</td>
+                                    </tr>
+                                   
+                                </tbody>
+                                <tfoot>
+                                    
+                                </tfoot>
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5 text-end mt-5">
+                <button class="btn btn-outline-primary" (click)="printBill(printingId)">Print Bill</button>
+            </div>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Product</h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+          <button type="button" class="btn btn-md btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-lg    text-light"></i> Add Product</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive table-height">
+          <table class="table table-striped table-sm">
+            <thead>
+              <tr >
+                <th scope="col">Srn No.</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date</th>
+                <th scope="col">Pay from</th>
+              </tr>
+            </thead>
+            <tbody class="" *ngIf="UProductList !=null || UProductList?.length>0">
+              <tr *ngFor="let item of UProductList;let i = index" >
+                <td>{{i+1}}</td>
+                <td>{{item.productName_Id}}</td>
+                <td>{{item.amount|currency :'INR'}}</td>
+                <td>{{item.dop |date:'dd-MM-yyyy'}}</td>
+                <td>{{item.payFrom}}</td>
+    
+              </tr>
+            </tbody>
+            <tbody>
+              <tr *ngIf="UProductList == null || UProductList?.length == 0">
+                  <td colspan="3">
+                      <div>
+                          <img src="../../../assets/Record-not-found.jpg" alt="">
+                      </div>
+
+                  </td>
+                  <td colspan="2">
+                      <h3>No Data Found</h3>
+                  </td>
+              </tr>
+
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+   
+ 
+ 
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="ProductForm">
+            <div class="my-3">
+                <div class="form-label">Product Name</div>
+                <select class="form-control" formControlName="productName">
+                    <option [value]="0">Select Option</option>
+                    <option *ngFor="let item of ProductList" [value]="item.Id">{{item.pname}}</option>
+                </select>
+            </div>
+            <div class="my-3">
+                <div class="form-label">Amount </div>
+                <input type="text" class="form-control" formControlName="amount" />
+            </div>
+            <div class="my-3">
+                <div class="form-label">Pay From</div>
+                <select class="form-control" formControlName="payFrom">
+                    <option [value]="0">Select Option</option>
+                    <option *ngFor="let item of PayFromList" [value]="item.Id">{{item.pname}}</option>
+                </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary"  [disabled]="!ProductForm.valid" (click)="Save()">Save  </button>
+          <button type="button" class="btn btn-danger" id="closebtn" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+
+   
+ 
+ 

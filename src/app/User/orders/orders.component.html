@@ -1,0 +1,95 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Orders</h1>
+</div>
+<div class="card">
+<div class="card-body">
+    <!-- <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [type]="'line'">
+      </canvas>
+    </div> -->
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-3"> <h5>Your Orders Items</h5></div>
+          <div class="col-lg-5"></div>
+          <div class="col-lg-4 text-end"><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">New Order</button> </div>
+        </div>
+       <div class="row mt-3">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-light">
+                <thead>
+                  <tr>
+                    <th scope="col">Order Name</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Payfrom</th>
+                    <th scope="col">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="" *ngFor="let item of UProductList">
+                    <td scope="row">{{item.productName}}</td>
+                    <td scope="row">{{item.amount}}</td>
+                    <td scope="row">{{item.payFrom}}</td>
+                    <td scope="row">{{item.createdAt |date:'dd-MM-yyyy'}}</td>
+                    
+                  </tr>
+                 
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+        </div>
+       </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- modal form -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New Order</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="OrderForm">
+              <div class="my-3">
+                  <div class="form-label">Product Name</div>
+                  <input type="text" class="form-control" formControlName="productName">
+                  
+              </div>
+              <div class="my-3">
+                  <div class="form-label">Amount </div>
+                  <input type="number" class="form-control" formControlName="amount" />
+              </div>
+              <div class="my-3">
+                  <div class="form-label">Pay From</div>
+                  <select class="form-control" formControlName="payFrom">
+                      <option [value]="0">Select Option</option>
+                      <option *ngFor="let item of PayFromList" [value]="item.Id">{{item.pname}}</option>
+                  </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary"  [disabled]="!OrderForm.valid" (click)="Save()">Save  </button>
+            <button type="button" class="btn btn-danger" id="closebtn" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+   
+ 

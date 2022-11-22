@@ -1,0 +1,283 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h3">Dashboard</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <select [formControl]="curMonth" class="form-controlmy">
+                <option [value]="0">month</option>
+                <option *ngFor="let item of monthname" #myval [value]="item.Id" (change)="getDashboardSnyc()">
+                    {{ item.pname }}
+                </option>
+            </select>
+            <button type="button" class="btn btn-sm btn-success" (click)="getDashboardSnyc()">
+                <i class="bi bi-funnel text-light h5"></i> Snyc Data
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Begin Page Content -->
+<div class="container-fluid" *ngIf="DashboardIsActive">
+    <div class="row">
+        <!-- Earnings (Daily) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Spending (Today)
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ DailyAmount | currency: "INR" }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-calendar-check h3 text-success"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Annual) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Spending (Month)
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ MonthlyAmount | currency: "INR" }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-currency-dollar h3 text-danger"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-secondary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Spending (Yearly)
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ YearlyAmount | currency: "INR" }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-chat-heart h3 text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tasks Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Credit Limit
+                            </div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                        {{ salaryPercentageUsage }}%
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="progress progress-sm mr-2">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 90%"
+                                            aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Amount Send
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ LoanSend | currency: "INR" }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-arrow-up-square h3 text-danger"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Loan Receive  Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Amount Receive
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ LoanReceived | currency: "INR" }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-arrow-down-square h3 text-success"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- you have to pay amount Loan Receive  Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4" *ngIf="!IsSendcard">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                You will Pay Amount
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ PayAmount | currency: "INR" }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-arrow-up-square h3 text-danger"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- you have to  receive Amount   Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4" *ngIf="IsSendcard">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                You will Received Amount
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ PayAmount | currency: "INR" }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-arrow-down-square h3 text-success"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- chart area -->
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-xl-8 col-lg-7">
+            <!-- Area Chart -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <div class="row">
+                        <div class="col-6">
+                            <h6 class="m-0 font-weight-bold text-primary">Weekly Amount</h6>
+                        </div>
+                        <div class="col-6">
+                            <div class="btn-group float-end">
+                                <button class="btn btn-primary" [disabled]="weekbtn"
+                                    (click)="this.GetWeeklyStats('-1')">
+                                    Prev
+                                </button>
+                                <button class="btn btn-primary" [disabled]="weekbtnnext"
+                                    (click)="this.GetWeeklyStats('+1')">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas baseChart [datasets]="barChartDataWeek" [labels]="barChartLabelsss"
+                            [options]="barChartOptions" [legend]="barChartLegend" [type]="'line'">
+                        </canvas>
+                    </div>
+                    <hr />
+                    <h6>Weekly Spend Amount</h6>
+                </div>
+            </div>
+
+            <!-- Bar Chart -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <div class="row">
+                        <div class="col-6">
+                            <h6 class="m-0 font-weight-bold text-primary">Monthly Amount</h6>
+                        </div>
+                        <div class="col-6">
+                            <div class="btn-group float-end">
+                                <select class="form-control" [formControl]="yearnum" #myval
+                                    (change)="GetMonthlyStats(myval, 'ch')">
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-bar">
+                        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabelss"
+                            [options]="barChartOptions" [legend]="barChartLegend" [type]="'line'">
+                        </canvas>
+                    </div>
+                    <hr />
+                    <h6>Monthly Spended Amounts</h6>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donut Chart -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Yearly Amount</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-pie py-2">
+                        <canvas baseChart [datasets]="barChartDatayearly" [labels]="barChartLabelyearly"
+                            [options]="barChartOptions" [legend]="barChartLegend" [type]="'pie'">
+                        </canvas>
+                    </div>
+                    <hr />
+                    Yearly Amount Spends
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
