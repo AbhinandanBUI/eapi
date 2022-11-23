@@ -36,6 +36,7 @@ export class WorkingSalaryComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.toast.loader();
     this.userdetails = this.token.getUser();
     this.userid = this.userdetails.userId;
     this.GetSalaryDetail();
@@ -101,7 +102,5 @@ export class WorkingSalaryComponent implements OnInit {
     document.getElementById('closebtn')?.click();
   }
 
-  loader(){
-    this.toast.loader();
-  }
+  
 }

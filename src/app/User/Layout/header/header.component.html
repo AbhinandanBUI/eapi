@@ -1,31 +1,81 @@
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 border-danger fixed-top shadow">
-    <a class="navbar-brand col-md-4 col-sm-12 col-lg-2 me-0 px-3" >E wallet  </a>
-    <!-- <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button> -->
-    <!-- <input class="form-control form-control-dark w-25" type="text" placeholder="Search" aria-label="Search"> -->
-    <div class="dropdown  drop-down">
-      <img src="../../../../assets/account-profile.png" class="img-fixed" alt="">
-      <a class="btn btn-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-        {{userName}}
-      </a>
-    
-      <ul class="dropdown-menu  text-left" aria-labelledby="dropdownMenuLink">
-        <li><a class="dropdown-item" routerLink="profile" > <i class="bi bi-person"></i>  Profile</a></li>
-        <li><a class="dropdown-item" routerLink="profile" > <i class="bi bi-gear"></i>  Change Password</a></li>
-        <li><a class="dropdown-item" (click)="logout()" > <i class="bi bi-lock text-danger"></i> LogOut</a></li>
-        <!-- <li><a class="dropdown-item" (click)="logout()" >LogOut</a></li> -->
-      </ul>
-      
-      <button type="button" class="btn btn-dark position-relative">
-        <i class="bi bi-bell text-light"></i>
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-          0
-          <span class="visually-hidden">unread messages</span>
-        </span>
-      </button>
-    </div>
-    
 
-  </header>
-  
+  <a class="navbar-brand col-md-4 col-sm-12 col-lg-2 me-0 px-3 d-sm-none d-md-block d-none d-sm-block">E Report </a>
+  <div class="btn-group dropend d-block d-sm-none">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-list test-light"></i>
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <a class="dropdown-item" aria-current="page" routerLink="dashboard">
+          <span data-feather="home"></span>
+          <i class="bi bi-ui-radios-grid  fs-4 text-primary mx-2"></i>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item" routerLink="orders">
+          <i class="bi bi-cart-dash  fs-4 text-primary mx-2"></i>
+          Orders
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item" routerLink="product">
+          <i class="bi bi-display  fs-4 text-primary mx-2"></i>
+          Products
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item" routerLink="loan">
+          <i class="bi bi-bank  fs-4 text-primary mx-2"></i>
+          Loan
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item" routerLink="report">
+          <i class="bi bi-graph-up  fs-4 text-primary mx-2"></i>
+          Reports
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item" routerLink="profile">
+          <i class="bi bi-person  fs-4 text-primary mx-2"></i>
+          profile
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item" routerLink="workingsalary">
+          <i class="bi bi-person  fs-4 text-primary mx-2"></i>
+          Salary
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+  <!-- <input class="form-control form-control-dark w-25" type="text" placeholder="Search" aria-label="Search"> -->
+
+  <div class="dropdown  drop-down float-sm-end">
+    <img src="../../../../assets/account-profile.png" class="img-fixed" alt="">
+    <a class="btn btn-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+      aria-expanded="false">
+      {{userName}}
+    </a>
+
+    <ul class="dropdown-menu  text-left" aria-labelledby="dropdownMenuLink">
+      <li><a class="dropdown-item" routerLink="profile"> <i class="bi bi-person"></i> Profile</a></li>
+      <li><a class="dropdown-item" routerLink="profile"> <i class="bi bi-gear"></i> Change Password</a></li>
+      <li><a class="dropdown-item" (click)="logout()"> <i class="bi bi-lock text-danger"></i> LogOut</a></li>
+      <!-- <li><a class="dropdown-item" (click)="logout()" >LogOut</a></li> -->
+    </ul>
+
+    <button type="button" class="btn btn-dark position-relative">
+      <i class="bi bi-bell text-light"></i>
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        0
+        <span class="visually-hidden">unread messages</span>
+      </span>
+    </button>
+  </div>
+
+
+</header>

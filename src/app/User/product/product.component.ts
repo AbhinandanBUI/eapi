@@ -35,6 +35,7 @@ export class ProductComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.toaster.loader();
     this.userId = (this.token.getUser()).userId;
     this.ProductList = ProductNameString;
     this.PayFromList = PayFromString;

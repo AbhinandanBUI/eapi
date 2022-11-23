@@ -32,6 +32,7 @@ export class LoanReportComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.toaster.loader();
     this.userDetails = this.token.getUser();
     this.userid = this.userDetails.userId;
     this.Getdate();

@@ -40,6 +40,7 @@ export class LoanComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.toaster.loader();
     this.userid = parseInt(this.token.getUser().userId);
     this.ProductList = ProductNameString;
     this.PayFromList = PayFromString;
@@ -101,6 +102,7 @@ export class LoanComponent implements OnInit {
   }
   // CreateAccount
   CreateAccount() {
+    this.toaster.loader();
     const data = {
       userId: this.userid,
       loanerId: this.AccountDetails[0].userId,
@@ -137,6 +139,7 @@ export class LoanComponent implements OnInit {
   }
 
   SaveTransition() {
+    this.toaster.loader();
     const data = {
       userId: this.userid,
       loanerId: this.LoanerId,
@@ -174,6 +177,7 @@ export class LoanComponent implements OnInit {
   }
 
   ViewTransition(data: any) {
+    this.toaster.loader();
     this.LoanerName = data.loanerName;
     const dataa = {
       userId: this.userid,
@@ -194,6 +198,7 @@ export class LoanComponent implements OnInit {
   }
 
   printbill(data: any) {
+    this.toaster.loader();
     debugger;
     let id = data.loanerId;
     let loanerId = data.loanerId;

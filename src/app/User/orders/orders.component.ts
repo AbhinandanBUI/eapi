@@ -66,6 +66,7 @@ export class OrdersComponent implements OnInit {
     { data: [35, 45, 55, 65, 75, 85, 95], label: 'Series B' },
   ];
   ngOnInit() {
+    this.toaster.loader();
     this.userid = parseInt(this.token.getUser().userId);
     this.PayFromList = PayFrom;
     this.GetProduct();

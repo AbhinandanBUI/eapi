@@ -57,7 +57,7 @@
                         </thead>
                         <tbody class="table-group-divider">
                             <tr class="table-primary"  *ngFor="let item of basicSalaryDetails">
-                                <td scope="row">{{item.CreditedDateOfSalary}}</td>
+                                <td scope="row">{{item.CreditedDateOfSalary |date:'dd-MM-yyyy'}}</td>
                                 <td scope="row">{{item.SalaryDetails[0].totalSalary}}</td>
                                 <td scope="row">{{item.creditedSalary}}</td>
                             </tr>
@@ -69,7 +69,7 @@
         </div>
     </div>
 
-<button (click)="loader()">clicl loader</button>
+ 
 
 
 </div>

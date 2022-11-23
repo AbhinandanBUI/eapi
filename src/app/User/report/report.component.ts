@@ -47,6 +47,7 @@ export class ReportComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.toaster.loader();
     this.userId = this.token.getUser().userId;
     ///get month
     this.monthname = MonthName;
