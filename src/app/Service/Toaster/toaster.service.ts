@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
   providedIn: 'root',
 })
 export class ToasterService {
+  timerInterval: any;
+  
   constructor() // private swal:swal;
   {}
   LoginSuccess() {
@@ -118,4 +120,34 @@ export class ToasterService {
       title: message,
     });
   }
+
+  // timer
+
+  loader(){
+      this.timerInterval
+    Swal.fire({
+      // title: 'Auto close alert!',
+      // html: 'I will close in <b></b> milliseconds.',
+      timer: 1000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        // const b = Swal.getHtmlContainer().querySelector('b')
+        const b = Swal.getHtmlContainer()?.querySelector('b');
+        this.timerInterval = setInterval(() => {
+          // b.textContent = Swal.getTimerLeft()
+          // b?.textContent = Swal.getTimerLeft()
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(this.timerInterval)
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+      }
+    })
+
+}
 }

@@ -71,6 +71,7 @@ export class UserDashboardComponent implements OnInit {
   curMonth = new FormControl('');
 
   ngOnInit(): void {
+    this.toast.loader();
     const userDetails = this.token.getUser();
     this.userid = userDetails.userId;
     this.CheckDashboard();

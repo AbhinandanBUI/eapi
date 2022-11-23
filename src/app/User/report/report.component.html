@@ -6,82 +6,84 @@
     <div class="card-body">
         <div class="container">
             <form [formGroup]="productfilterform">
-            <div class="row">
-                <div class="col-1">
-                    <select class="form-control" formControlName="year"  >
-                        <option [value]="0">year</option>
-                        <option  *ngFor="let item of years" [value]="item.y">{{item.y}}</option>
-                    </select>
+                <div class="row">
+                    <div class="col-lg-1 col-md-1 col-sm-12 mt-2">
+                        <select class="form-control" formControlName="year">
+                            <option [value]="0">year</option>
+                            <option *ngFor="let item of years" [value]="item.y">{{item.y}}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 mt-2">
+                        <select class="form-control" formControlName="month">
+                            <option [value]="0">month</option>
+                            <option *ngFor="let item of monthname" [value]="item.Id">{{item.pname}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-12 mt-2"><input type="date" class="form-control" formControlName="fromdate" /></div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 mt-2"><input type="date" class="form-control" formControlName="todate" /></div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 mt-2"> <button class="btn btn-md px-5 btn-info" (click)="MoreFilter()">Search</button>
+                    </div>
                 </div>
-                <div class="col-3">
-                    <select class="form-control" formControlName="month">
-                        <option [value]="0">month</option>
-                        <option *ngFor="let item of monthname" [value]="item.Id">{{item.pname}}</option>
-                    </select>
-                </div>
-               
-                <div class="col-3"><input type="date" class="form-control" formControlName="fromdate"/></div>
-                <div class="col-3"><input type="date" class="form-control" formControlName="todate"/></div>
-                <div class="col-2"> <button class="btn btn-md px-5 btn-info" (click)="MoreFilter()">Search</button> </div>
-            </div>
-        </form>
+            </form>
         </div>
-        
-<!--  -->
-<div class="row container">
-    <!-- Earnings (Daily) Card Example -->
-    <div class="col-xl-3 col-md-6 mt-4">
-        <div class="card border-left-primary shadow h-100 py-2">
+
+        <!--  -->
+        <div class="row container">
+            <!-- Earnings (Daily) Card Example -->
+            <div class="col-xl-3 col-md-6 mt-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Spending (Today)</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{TotalAmount |currency:'INR'}}
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-currency-dollar h3 text-danger"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-2">
             <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Spending (Today)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{TotalAmount |currency:'INR'}}</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="bi bi-currency-dollar h3 text-danger"></i>
-                    </div>
+                <div class="table-responsive">
+                    <table class="table table-light">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">PayFrom</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let item of ProductList">
+                            <tr>
+                                <td scope="row">{{item.productName_Id}}</td>
+                                <td scope="row">{{item.amount}}</td>
+                                <td scope="row">{{item.dop}}</td>
+                                <td scope="row">{{item.payFrom}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
             </div>
         </div>
-    </div>
-</div>
-
-<div class="card mt-2">
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-light">
-                <thead>
-                    <tr>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">PayFrom</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let item of ProductList">
-                    <tr>
-                        <td scope="row">{{item.productName_Id}}</td>
-                        <td scope="row">{{item.amount}}</td>
-                        <td scope="row">{{item.dop}}</td>
-                        <td scope="row">{{item.payFrom}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-    </div>
-</div>
 
 
-<!--  -->
+        <!--  -->
 
- <!-- table list -->
- 
+        <!-- table list -->
 
-  <!-- ngx table  -->
-  <!-- <div class="row">
+
+        <!-- ngx table  -->
+        <!-- <div class="row">
     <div class="table-responsive">
         <ngx-datatable #table class="bootstrap" [rows]="InvoiceList"
             [loadingIndicator]="loadingIndicator" [columnMode]="ColumnMode.force" [footerHeight]="50"
@@ -127,4 +129,4 @@
         </ngx-datatable>
     </div>
 </div> -->
-  <!-- ngx table  -->
+        <!-- ngx table  -->

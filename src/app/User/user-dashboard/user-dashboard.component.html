@@ -1,18 +1,26 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h3">Dashboard</h1>
-    <div class="btn-toolbar mb-2 mb-md-0">
-        <div class="btn-group me-2">
-            <select [formControl]="curMonth" class="form-controlmy">
-                <option [value]="0">month</option>
-                <option *ngFor="let item of monthname" #myval [value]="item.Id" (change)="getDashboardSnyc()">
-                    {{ item.pname }}
-                </option>
-            </select>
-            <button type="button" class="btn btn-sm btn-success" (click)="getDashboardSnyc()">
-                <i class="bi bi-funnel text-light h5"></i> Snyc Data
-            </button>
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-12"> <h1 class="h3">Dashboard</h1></div>
+    <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+                <select [formControl]="curMonth" class="form-controlmy">
+                    <option [value]="0">month</option>
+                    <option *ngFor="let item of monthname" #myval [value]="item.Id" (change)="getDashboardSnyc()">
+                        {{ item.pname }}
+                    </option>
+                </select>
+                <button type="button" class="btn btn-sm btn-success" (click)="getDashboardSnyc()">
+                    <i class="bi bi-funnel text-light h5"></i> Snyc Data
+                </button>
+            </div>
         </div>
     </div>
+  </div> 
+   
+   
+   
+   
 </div>
 <!-- Begin Page Content -->
 <div class="container-fluid" *ngIf="DashboardIsActive">

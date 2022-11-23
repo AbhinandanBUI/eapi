@@ -10,24 +10,25 @@ import { TokenService } from '../Service/token.service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-//   private source = interval(
-//     environment.corePingIntervalSeconds * 1000;
-//  );
+  //   private source = interval(
+  //     environment.corePingIntervalSeconds * 1000;
+  //  );
 
   ngOnInit(): void {
   }
   private source = interval(30000);
 
-  constructor(private _http: HttpClient,private token :TokenService) {
+  constructor(private _http: HttpClient, private token: TokenService) {
     this.source.subscribe(() => {
-       this._http
-        .get('http://localhost:4001', { observe: 'response' })
+      this._http
+        .get('https://ereportapi.herokuapp.com/', { observe: 'response' })
         .pipe(first())
         .subscribe(
           resp => {
-            if (resp.status === 200) {
+
+            if (resp.status == 200) {
               console.log(true);
-              
+
             } else {
               console.log(false);
               Swal.fire(
@@ -37,13 +38,14 @@ export class UserComponent implements OnInit {
               )
             }
           },
-          err =>{ console.log(err)
+          err => {
+            console.log(err)
             Swal.fire(
               'API  ERROR ?',
               'The api  is not running around?',
               'question'
             );
-            this.token.signout();
+            // this.token.signout();
           }
         );
     });

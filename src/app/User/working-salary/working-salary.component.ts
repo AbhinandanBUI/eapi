@@ -42,6 +42,7 @@ export class WorkingSalaryComponent implements OnInit {
   }
   //#Get Basic Details
   GetSalaryDetail() {
+    
     const data = {
       userId: this.userid,
     };
@@ -98,5 +99,9 @@ export class WorkingSalaryComponent implements OnInit {
       companyName: this.salaryUpdateForm.controls['companyName'].value,
     });
     document.getElementById('closebtn')?.click();
+  }
+
+  loader(){
+    this.toast.loader();
   }
 }
