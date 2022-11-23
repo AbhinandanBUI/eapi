@@ -114,6 +114,7 @@ export class LoanReportComponent implements OnInit {
     // WindowPrt.focus();
     // WindowPrt.print();
     // WindowPrt.close();
+    window.print();
     
   }
 }

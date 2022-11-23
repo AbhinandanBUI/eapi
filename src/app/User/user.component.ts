@@ -16,36 +16,36 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // private source = interval(20000);
+  private source = interval(30000);
 
-  // constructor(private _http: HttpClient,private token :TokenService) {
-  //   this.source.subscribe(() => {
-  //      this._http
-  //       .get('http://localhost:4001', { observe: 'response' })
-  //       .pipe(first())
-  //       .subscribe(
-  //         resp => {
-  //           if (resp.status === 200) {
-  //             console.log(true);
+  constructor(private _http: HttpClient,private token :TokenService) {
+    this.source.subscribe(() => {
+       this._http
+        .get('http://localhost:4001', { observe: 'response' })
+        .pipe(first())
+        .subscribe(
+          resp => {
+            if (resp.status === 200) {
+              console.log(true);
               
-  //           } else {
-  //             console.log(false);
-  //             Swal.fire(
-  //               'The Internet?',
-  //               'That thing is still around?',
-  //               'question'
-  //             )
-  //           }
-  //         },
-  //         err =>{ console.log(err)
-  //           Swal.fire(
-  //             'API  ERROR ?',
-  //             'The api  is not running around?',
-  //             'question'
-  //           );
-  //           // this.token.signout();
-  //         }
-  //       );
-  //   });
-  // }
+            } else {
+              console.log(false);
+              Swal.fire(
+                'The Internet?',
+                'That thing is still around?',
+                'question'
+              )
+            }
+          },
+          err =>{ console.log(err)
+            Swal.fire(
+              'API  ERROR ?',
+              'The api  is not running around?',
+              'question'
+            );
+            this.token.signout();
+          }
+        );
+    });
+  }
 }
