@@ -8,23 +8,25 @@
   </div>
 </div>
 <div class="card-body">
-  <div class="table-responsive table-height">
+  <div class="table-responsive">
     <table class="table align-middle  table-sm">
       <thead>
         <tr>
-          <th scope="col">Srn No.</th>
+          <!-- <th scope="col">Srn No.</th> -->
+          <th scope="row">Date</th>
           <th scope="col">Product Name</th>
           <th scope="col">Amount</th>
-          <th scope="row">Date</th>
+         
           <th scope="col">Pay from</th>
         </tr>
       </thead>
       <tbody class="" *ngIf="UProductList !=null || UProductList?.length>0">
         <tr *ngFor="let item of UProductList;let i = index">
-          <td>{{i+1}}</td>
+          <!-- <td>{{i+1}}</td> -->
+          <td>{{item.dop |date:'dd-MM-yyyy'}}</td>
           <td>{{item.productName_Id}}</td>
           <td>{{item.amount|currency :'INR'}}</td>
-          <td>{{item.dop |date:'dd-MM-yyyy'}}</td>
+         
           <td>{{item.payFrom}}</td>
 
         </tr>

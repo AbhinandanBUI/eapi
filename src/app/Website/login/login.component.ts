@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MasterService } from 'src/app/Service/master.service';
 import { ToasterService } from 'src/app/Service/Toaster/toaster.service';
@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
     private toaster:ToasterService
     ) {}
   loginform = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
+    email: new FormControl('',[Validators.required,Validators.email]),
+    password: new FormControl('',[Validators.required,Validators.minLength(4)]),
   });
 
   ngOnInit(): void {}

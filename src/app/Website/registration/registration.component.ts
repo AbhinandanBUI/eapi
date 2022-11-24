@@ -12,10 +12,10 @@ export class RegistrationComponent implements OnInit {
   constructor(private api: MasterService, private toast: ToasterService) {}
 
   registrationform = new FormGroup({
-    fname: new FormControl('', [Validators.required]),
+    fname: new FormControl('', [Validators.required,Validators.minLength(3)]),
     lname: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required,Validators.email]),
+    password: new FormControl('', [Validators.required,Validators.minLength(4),Validators.maxLength(8)]),
     cpassword: new FormControl('', [Validators.required]),
     dob: new FormControl('', [Validators.required]),
     mobile: new FormControl('', [Validators.required]),

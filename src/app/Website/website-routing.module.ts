@@ -9,7 +9,7 @@ import { WebsiteComponent } from './website.component';
 const routes: Routes = [
   {path:'',component:WebsiteComponent,
   children:[
-    {path:'',component:WebhomeComponent},
+    {path:'',component:LoginComponent},
     {path:'login',component:LoginComponent},
     {path:'Registration',component:RegistrationComponent},
     {path:'forget-password',component:ForgetPasswordComponent},

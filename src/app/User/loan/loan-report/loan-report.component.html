@@ -1,10 +1,10 @@
-<div id="replace" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<div id="replace" class="d-print-none d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Loan</h1>
     <div class="btn btn-primary" routerLink="/loan">
         <i class="bi bi-arrow-left text-light"></i> Back
     </div>
 </div>
-
+<div class="d-block">
 <div class="card" id="printingId" #printingId>
     <div class="card-body">
         <h5 class="text-center">Bill By E-Report</h5>
@@ -77,11 +77,12 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row d-print-none">
             <div class="col-5 text-end mt-5">
                 <button class="btn btn-outline-primary" (click)="printBill(printingId)">Print Bill</button>
             </div>
             
         </div>
     </div>
+</div>
 </div>

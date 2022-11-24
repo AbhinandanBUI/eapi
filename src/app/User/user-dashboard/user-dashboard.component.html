@@ -1,21 +1,21 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="col-xl-6 col-lg-6  col-md-6 col-sm-12">
             <h1 class="h3">Dashboard</h1>
         </div>
-        <div class="col-lg-6 col-md-6  col-sm-12  float-end">
-            <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <div class="col-xl-6 col-lg-6 col-md-6  col-sm-12">
+            
                 <select [formControl]="curMonth" class="form-control">
                     <option [value]="0">month</option>
-                    <option *ngFor="let item of monthname" #myval [value]="item.Id" (change)="getDashboardSnyc()">
+                    <option *ngFor="let item of monthname" #myval disabled [value]="item.Id" (change)="getDashboardSnyc()">
                         {{ item.pname }}
                     </option>
                 </select>
-                <button type="button" class="btn btn-success"><i class="bi bi-funnel text-light h5"></i></button>
-                <button type="button" class="btn btn-sm btn-success" (click)="getDashboardSnyc()">
-                    Snyc Data
-                </button>
-            </div>
+                 
+                <!-- <button type="button" class="form-control" (click)="getDashboardSnyc()">
+                    <i class="bi bi-funnel text-light h5"></i>  Snyc Data
+                </button> -->
+           
         </div>
     </div>
 
