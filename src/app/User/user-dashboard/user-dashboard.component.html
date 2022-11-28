@@ -203,7 +203,7 @@
     <!-- chart area -->
     <!-- Content Row -->
     <div class="row">
-        <div class="col-xl-8 col-lg-7 col-sm-12">
+        <div class="col-xl-8 col-lg-7 col-sm-12 col-xs-12">
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -225,7 +225,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card">
                     <div class="chart-area">
                         <canvas baseChart [datasets]="barChartDataWeek" [labels]="barChartLabelsss"
                             [options]="barChartOptions" [legend]="barChartLegend" [type]="'line'">
@@ -269,15 +269,15 @@
         </div>
 
         <!-- Donut Chart -->
-        <div class="col-xl-4 col-lg-5 col-sm-12">
+        <div class="col-xl-4 col-lg-5 col-xs-12 col-sm-12">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Yearly Amount</h6>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body">
-                    <div class="chart-pie py-2">
+                <div class="card">
+                    <div class="chart-pie py-2 px-0">
                         <canvas baseChart [datasets]="barChartDatayearly" [labels]="barChartLabelyearly"
                             [options]="barChartOptions" [legend]="barChartLegend" [type]="'pie'">
                         </canvas>

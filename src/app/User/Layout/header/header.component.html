@@ -6,50 +6,56 @@
       <i class="bi bi-list test-light"></i>
     </button>
     <ul class="dropdown-menu">
-      <li>
-        <a class="dropdown-item" aria-current="page" routerLink="dashboard">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" routerLink="dashboard">
           <span data-feather="home"></span>
-          <i class="bi bi-ui-radios-grid  fs-4 text-primary mx-2"></i>
+          <i class="bi bi-ui-radios-grid  fs-4 text-danger mx-2"></i>
           Dashboard
         </a>
       </li>
-      <li>
-        <a class="dropdown-item" routerLink="orders">
-          <i class="bi bi-cart-dash  fs-4 text-primary mx-2"></i>
-          Orders
+      <li class="nav-item">
+        <a class="nav-link" routerLink="product">
+          <i class="bi bi-wallet  fs-4 text-primary mx-2"></i>
+          Today Spends
         </a>
       </li>
-      <li>
-        <a class="dropdown-item" routerLink="product">
-          <i class="bi bi-display  fs-4 text-primary mx-2"></i>
-          Products
+      <li class="nav-item">
+        <a class="nav-link" routerLink="orders">
+          <i class="bi bi-cart-dash  fs-4 text-info mx-2"></i>
+          Shopping
         </a>
       </li>
-      <li>
-        <a class="dropdown-item" routerLink="loan">
-          <i class="bi bi-bank  fs-4 text-primary mx-2"></i>
-          Loan
+     
+      <li class="nav-item">
+        <a class="nav-link" routerLink="loan">
+          <i class="bi bi-paypal  fs-4 text-danger mx-2"></i>
+         Amount Transition
         </a>
       </li>
-      <li>
-        <a class="dropdown-item" routerLink="report">
-          <i class="bi bi-graph-up  fs-4 text-primary mx-2"></i>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="report">
+          <i class="bi bi-graph-up  fs-4 text-warning mx-2"></i>
           Reports
         </a>
       </li>
-      <li>
-        <a class="dropdown-item" routerLink="profile">
-          <i class="bi bi-person  fs-4 text-primary mx-2"></i>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="profile">
+          <i class="bi bi-person  fs-4 text-success mx-2"></i>
           profile
         </a>
       </li>
-      <li>
-        <a class="dropdown-item" routerLink="workingsalary">
-          <i class="bi bi-person  fs-4 text-primary mx-2"></i>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="workingsalary">
+          <i class="bi bi-cash  fs-4 text-info mx-2"></i>
           Salary
         </a>
       </li>
-      
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">
+          <i class="bi bi-lock  fs-4 text-danger mx-2"></i>
+         Logout
+        </a>
+      </li>
     </ul>
   </div>
   <!-- <input class="form-control form-control-dark w-25" type="text" placeholder="Search" aria-label="Search"> -->
