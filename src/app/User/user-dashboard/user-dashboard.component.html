@@ -4,18 +4,18 @@
             <h1 class="h3">Dashboard</h1>
         </div>
         <div class="col-xl-6 col-lg-6 col-md-6  col-sm-12">
-            
-                <select [formControl]="curMonth" class="form-control">
-                    <option [value]="0">month</option>
-                    <option *ngFor="let item of monthname" #myval disabled [value]="item.Id" (change)="getDashboardSnyc()">
-                        {{ item.pname }}
-                    </option>
-                </select>
-                 
-                <!-- <button type="button" class="form-control" (click)="getDashboardSnyc()">
+
+            <select [formControl]="curMonth" class="form-control">
+                <option [value]="0">month</option>
+                <option *ngFor="let item of monthname" #myval disabled [value]="item.Id" (change)="getDashboardSnyc()">
+                    {{ item.pname }}
+                </option>
+            </select>
+
+            <!-- <button type="button" class="form-control" (click)="getDashboardSnyc()">
                     <i class="bi bi-funnel text-light h5"></i>  Snyc Data
                 </button> -->
-           
+
         </div>
     </div>
 
@@ -202,8 +202,8 @@
 
     <!-- chart area -->
     <!-- Content Row -->
-    <div class="row">
-        <div class="col-xl-8 col-lg-7 col-sm-12 col-xs-12">
+    <div class="row ">
+        <div class="col-xl-8 col-lg-7 col-sm-12 col-xs-12 d-none d-xl-block d-xxl-none">
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -225,14 +225,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card-body">
                     <div class="chart-area">
                         <canvas baseChart [datasets]="barChartDataWeek" [labels]="barChartLabelsss"
                             [options]="barChartOptions" [legend]="barChartLegend" [type]="'line'">
                         </canvas>
                     </div>
-                    <hr />
-                    <h6>Weekly Spend Amount</h6>
+                </div>
+                <div class="card-header py-3">
+                    <h6 class="m-1 font-weight-bold text-primary"> Weekly Spend Amount</h6>
                 </div>
             </div>
 
@@ -262,31 +263,115 @@
                             [options]="barChartOptions" [legend]="barChartLegend" [type]="'line'">
                         </canvas>
                     </div>
-                    <hr />
-                    <h6>Monthly Spended Amounts</h6>
+
+                </div>
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary"> Monthly Spended Amounts </h6>
                 </div>
             </div>
         </div>
 
         <!-- Donut Chart -->
-        <div class="col-xl-4 col-lg-5 col-xs-12 col-sm-12">
+        <div class="col-xl-4 col-lg-5 col-xs-12 col-sm-12 d-none d-xl-block d-xxl-none">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Yearly Amount</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Transition Amount</h6>
                 </div>
                 <!-- Card Body -->
-                <div class="card">
-                    <div class="chart-pie py-2 px-0">
+                <div class="card-body">
+                    <div class="chart-pie py-auto px-0">
                         <canvas baseChart [datasets]="barChartDatayearly" [labels]="barChartLabelyearly"
                             [options]="barChartOptions" [legend]="barChartLegend" [type]="'pie'">
                         </canvas>
                     </div>
-                    <hr />
-                    Yearly Amount Spends
+
+
+                </div>
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Yearly Amount Spends</h6>
                 </div>
             </div>
         </div>
     </div>
+    <div class="row mb-5 d-block d-sm-none">
+        <!-- weekly chart -->
+        <div class="col-xs-12 col-lg-12 col-md-12 " style="height:auto;">
+            <!-- <div class="col-xl-12 col-lg-10 col-sm-12 col-xs-12   "> -->
+            <div class="card shadow my-auto">
+                <div class="card-header py-3">
+                    <div class="row">
+                        <div class="col-6">
+                            <h6 class="m-0 font-weight-bold text-primary">Weekly Amount</h6>
+                        </div>
+                        <div class="col-6">
+                            <div class="btn-group float-end">
+                                <button class="btn btn-primary" [disabled]="weekbtn"
+                                    (click)="this.GetWeeklyStats('-1')">
+                                    Prev
+                                </button>
+                                <button class="btn btn-primary" [disabled]="weekbtnnext"
+                                    (click)="this.GetWeeklyStats('+1')">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas baseChart [datasets]="barChartDataWeek" [labels]="barChartLabelsss"
+                            [options]="barChartOptions" [legend]="barChartLegend" [type]="'line'">
+                        </canvas>
+                    </div>
+                </div>
+                <div class="card-header py-3">
+                    <h6 class="m-1 font-weight-bold text-primary"> Weekly Spend Amount</h6>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+        <!-- monthly chart -->
+        <div class="col-xs-12 col-lg-12 col-md-12 mt-2">
+            <!-- Bar Chart -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <div class="row">
+                        <div class="col-6">
+                            <h6 class="m-0 font-weight-bold text-primary">Monthly Amount</h6>
+                        </div>
+                        <div class="col-6">
+                            <div class="btn-group float-end">
+                                <select class="form-control" [formControl]="yearnum" #myval
+                                    (change)="GetMonthlyStats(myval, 'ch')">
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-bar">
+                        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabelss"
+                            [options]="barChartOptions" [legend]="barChartLegend" [type]="'line'">
+                        </canvas>
+                    </div>
+
+                </div>
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary"> Monthly Spended Amounts </h6>
+                </div>
+            </div>
+        </div>
+        <!-- pie chart -->
+        <div class="col-xs-12 col-lg-12 col-md-12">
+
+        </div>
+    </div>
+
+
 
 </div>
