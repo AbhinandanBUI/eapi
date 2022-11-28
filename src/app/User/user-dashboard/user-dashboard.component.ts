@@ -148,6 +148,7 @@ export class UserDashboardComponent implements OnInit {
         console.log('api error' + err);
         Swal.fire('The Internet?', 'That thing is still around?', 'question');
       },
+      
     });
   }
   // # check Dashboard is activated or not
